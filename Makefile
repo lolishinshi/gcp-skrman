@@ -10,7 +10,7 @@ deploy:
 		--runtime python311 \
 		--memory 256MiB \
 		--timeout 30s \
-		--set-env-vars BOT_TOKEN=${BOT_TOKEN},DATABASE_URL=${DATABASE_URL} \
+		--set-env-vars "BOT_TOKEN=${BOT_TOKEN},DATABASE_URL=${DATABASE_URL}" \
 		--region $(REGION) \
 		--source=. \
 		--entry-point handler \

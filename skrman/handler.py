@@ -55,13 +55,15 @@ async def on_msg_reply(message: types.Message):
     """
     添加用户对 sticker 的描述，或者删除描述
     """
-    file_type, file_id, file_unique_id = get_sticker_type(message.reply_to_message)
+    file_type, file_id, file_unique_id, title = get_sticker_type(
+        message.reply_to_message
+    )
 
     if message.text == "/delete":
         delete_description(message.from_user.id, file_unique_id)
         await message.reply("删除成功")
     else:
-        sticker = add_sticker(file_type, file_id, file_unique_id)
+        sticker = add_sticker(file_type, file_id, file_unique_id, title)
         add_description(sticker.id, message.from_user.id, message.text)
         await message.reply("添加成功")
 
@@ -79,7 +81,9 @@ async def on_inline_query(query: types.InlineQuery):
                 )
             case "document":
                 result = types.InlineQueryResultCachedDocument(
-                    id=sticker.file_unique_id, document_file_id=sticker.file_id
+                    id=sticker.file_unique_id,
+                    title=sticker.title,
+                    document_file_id=sticker.file_id,
                 )
             case "animation":
                 result = types.InlineQueryResultCachedGif(
@@ -87,7 +91,9 @@ async def on_inline_query(query: types.InlineQuery):
                 )
             case "video":
                 result = types.InlineQueryResultCachedVideo(
-                    id=sticker.file_unique_id, video_file_id=sticker.file_id
+                    id=sticker.file_unique_id,
+                    title=sticker.title,
+                    video_file_id=sticker.file_id,
                 )
             case "audio":
                 result = types.InlineQueryResultCachedAudio(
