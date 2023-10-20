@@ -14,8 +14,7 @@ deploy:
 		--region $(REGION) \
 		--source=. \
 		--entry-point handler \
-		--trigger-http \
-		--allow-unauthenticated
+		--trigger-http
 
 delete:
 	gcloud functions delete $(FUNCTION_NAME) --region $(REGION)
