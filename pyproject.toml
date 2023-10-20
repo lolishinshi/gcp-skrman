@@ -1,0 +1,24 @@
+[project]
+name = "skrman"
+version = "0.1.0"
+description = "telegram sticker manager"
+authors = [
+    {name = "Aloxaf", email = "Aloxafx@gmail.com"},
+]
+dependencies = [
+    "functions-framework>=3.4.0",
+    "aiogram>=3.1.1",
+    "peewee>=3.17.0",
+    "unsync>=1.4.0",
+    "jieba>=0.42.1",
+    "psycopg2>=2.9.9",
+    "pillow>=10.1.0",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "types-peewee>=3.17.0.0",
+]
