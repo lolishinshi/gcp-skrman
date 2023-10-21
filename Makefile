@@ -9,7 +9,7 @@ deploy:
 	gcloud functions deploy $(FUNCTION_NAME) \
 		--gen2 \
 		--runtime python311 \
-		--memory 300MiB \
+		--memory 352MiB \
 		--timeout 30s \
 		--set-env-vars "BOT_TOKEN=${BOT_TOKEN},DATABASE_URL=${DATABASE_URL}" \
 		--region $(REGION) \
