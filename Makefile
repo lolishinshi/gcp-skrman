@@ -1,5 +1,6 @@
 FUNCTION_NAME=skrman
 REGION=us-east1
+USEROUTPUT=false
 
 # TODO: 用 gcloud 的 secret 来存储 token
 
@@ -15,7 +16,7 @@ deploy:
 		--source=. \
 		--entry-point handler \
 		--trigger-http \
-		--allow-unauthenticated
+		--user-output-enabled=$(USEROUTPUT)
 
 delete:
 	gcloud functions delete $(FUNCTION_NAME) --region $(REGION)
